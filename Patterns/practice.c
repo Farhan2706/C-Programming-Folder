@@ -6,26 +6,16 @@ int main()
     printf("Enter a Number : ");
     scanf("%d",&n);
 
-    for (int i =1; i <= n; i++){
-        for (int j = 1; j <= n-i; j++){
-            printf(" ");
-        }
-        int a = 1;
-        for (int k =1; k<=i; k++){
-            int d = a + 64;
-            char ch = (char)d;
-            printf("%c",ch);
+    int a = 1;
+    int mid = (2*n+1)/2+1;
+    for (int i = 1; i <= 2*n+1; i++){ 
+        printf("%d",a);
+        if (i<mid){
             a++;
         }
-        int b = i-1;
-        for (int l =1; l <= i-1; l++){
-            int d = b + 64;
-            char ch = (char)d;
-            printf("%c",ch);
-            b--;
+        else {
+            a--;
         }
-        printf("\n");
     }
-
 return 0;
 }
