@@ -1,21 +1,39 @@
 #include <stdio.h>
-int power(int a, int b){
-    if(b==0) return 1;
-    int RecAns = a*power(a,b-1);
-    return RecAns;
-}
-
-int main()
+int maze(int cr, int cc, int er, int ec)
 {
-    int a;
-    printf("Enter a Base : ");
-    scanf("%d",&a);
-    int b;
-    printf("Enter a Exponent : ");
-    scanf("%d",&b);
-
-    int p = power(a,b);
-    printf("%d raised to the power %d is %d",a,b,p);
-
-return 0;
+    int rightways = 0;
+    int downways = 0;
+     if (cr == er && cc == ec)
+    {
+        return 1;
+    }
+    if (cr == er)
+    {
+        rightways += maze(cr, cc + 1, er, ec);
+    }
+    if (cc == ec)
+    {
+        downways += maze(cr + 1, cc, er, ec);
+    }
+    if (cr < er && cc < ec)
+    {
+        rightways += maze(cr, cc + 1, er, ec);
+        downways += maze(cr + 1, cc, er, ec);
+    }
+    int totalways = rightways + downways;
+    return totalways;
 }
+    int main()
+    {
+        int n;
+        printf("Enter no of Rows of the maze : ");
+        scanf("%d", &n);
+        int m;
+        printf("Enter a no of Column of the maze : ");
+        scanf("%d", &m);
+
+        int ways = maze(1, 1, n, m);
+        printf("The total no of ways to reach the end of the maze : %d", ways);
+
+        return 0;
+    }
