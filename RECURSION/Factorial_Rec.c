@@ -14,7 +14,7 @@ int main()
     scanf("%d", &n);
 
     int fact = factorial(n);
-    printf("%d", fact);
+    printf("%d\n", fact);
 
     return 0;
 }
