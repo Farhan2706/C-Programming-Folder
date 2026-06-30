@@ -1,20 +1,29 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 int main() {
 
-    int sumt = 0;
-    int arr[5] = {1,2,3,4,5};
-    for(int i = 0; i <= 4; i++){
-        sumt = sumt + arr[i];
+    int n;
+    printf("Enter size of Array : ");
+    scanf("%d",&n);
+
+    int arr[n];
+    for(int i = 0; i <= n-1; i++){
+        printf("Enter %d Number : ",i+1);
+        scanf("%d",&arr[i]);
     }
-    int summ = 0;
-    int brr[4] = {1,2,3,4};
-    for(int i = 0; i <= 3; i++){
-        summ = summ + brr[i];
+    for(int i = 0; i <= n-1; i++){
+        bool flag = false;
+        for(int j = i + 1; j <= n-1; j++){
+            if (arr[i] == arr[j]){
+                flag = true;
+            }
+        }
+        if (flag == false){
+            printf("Unique element is %d and its index is %d\n",arr[i],i);
+            break;
+        }
     }
-    int total = sumt - summ;
-    printf("Missing Number : %d\n",total);
-    
 
     return 0;
 }
