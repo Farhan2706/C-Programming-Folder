@@ -1,37 +1,32 @@
 #include <stdio.h>
-#include <string.h>
+#include <stdbool.h>
 
 int main() {
 
-    typedef struct Employee{
-        char name[30];
-        int emp_id;
-        int age;
-        char location[30];
-    }emp;
-     
-    emp arr[3];
-    strcpy(arr[0].name,"Sahil");
-    arr[0].emp_id = 234;
-    arr[0].age = 21;
-    strcpy(arr[0].location,"Delhi");
+    typedef struct date{
+        int day;
+        int month;
+        int year;
+    } date;
 
-    strcpy(arr[1].name,"Ali");
-    arr[1].emp_id = 546;
-    arr[1].age = 27;
-    strcpy(arr[1].location,"Mumbai");
+    date a,b,c;
 
-    strcpy(arr[2].name,"Zubair");
-    arr[2].emp_id = 753;
-    arr[2].age = 32;
-    strcpy(arr[2].location,"Gujrat");
+    a.day = 12;
+    a.month = 5;
+    a.year = 2012;
 
-    for(int i = 0; i <= 2; i++){
-        printf("\nName : %s\n",arr[i].name);
-        printf("Employee id : %d\n",arr[i].emp_id);
-        printf("Age : %d\n",arr[i].age);
-        printf("Location : %s\n",arr[i].location);
-    }
+    b.day = 12;
+    b.month = 5;
+    b.year = 2012;
+
+    bool flag = true;
+
+    if(a.day != b.day) flag = false;
+    if(a.month != b.month) flag = false;
+    if(a.year != b.year) flag = false;
+
+    if(flag == true) printf("Dates are same\n");
+    else printf("Dates are Different\n");
 
     return 0;
 }
