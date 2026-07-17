@@ -1,43 +1,44 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 int main()
 {
-    int n;
-    printf("Enter Size or Array : ");
-    scanf("%d",&n);
-
-    int arr[n];
-    for(int i = 0; i < n; i++){
-        printf("Value of [%d] : ",i+1);
-        scanf("%d",&arr[i]);
-    }
-
-    printf("Unsorted Array : ");
+    int n = 8;
+    int arr[8] = {3, 0, 6, 0, 0, 1, 6, 0};
+    int ans[8];
+    printf("Input Array : ");
     for (int i = 0; i < n; i++)
     {
         printf("%d ", arr[i]);
     }
     printf("\n");
 
-    // Insertions Sort
-    for (int i = 1; i < n; i++)
+    // Push zeros
+
+    int idx = 0;
+    for (int i = 0; i < n - 1; i++)
     {
-        int j = i;
-        while (j >= 1 && arr[j] < arr[j - 1])
+        bool flag = true;
+        for (int j = 0; j < n - 1 - i; j++)
         {
-            int temp = arr[j];
-            arr[j] = arr[j - 1];
-            arr[j - 1] = temp;
-            j--;
+            if (arr[j] == 0)
+            {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                flag = false;
+            }
         }
+        if (flag == true)
+            break;
     }
 
-    printf("Sorted Array : ");
+    printf("Final Array : ");
     for (int i = 0; i < n; i++)
     {
         printf("%d ", arr[i]);
     }
-    
+
     printf("\n");
 
     return 0;
